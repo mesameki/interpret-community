@@ -15,7 +15,7 @@ This repository contains an SDK and Jupyter notebooks with examples to showcase 
 # Contents
 (urls will be added once this is solidified)
 - Try our notebooks
-    - Launch them on Azure
+    - Launch them on AzureML
 - Getting Started 
 - Models
 - Contributing
