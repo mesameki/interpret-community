@@ -8,9 +8,9 @@ Interpret Community Extensions SDK
 =============================================================
 
 
-The Interpret Community Extensions builds on [InterpretML](https://github.com/Microsoft/interpret), an open source python package from Microsoft Research for training interpretable models and explaining blackbox systems, by adding additional extensions from the community to interpret blackbox ML models.
+The Interpret Community Extensions builds on [InterpretML](https://github.com/Microsoft/interpret), an open source python package from Microsoft Research for training interpretable models and helping to explain blackbox systems, by adding additional extensions from the community to interpret ML models.
 
-This repository contains examples and best practices to use tools to assist in interpretability.
+This repository contains an SDK and Jupyter notebooks with examples to showcase it's use.
 
 # Contents
 (urls will be added once this is solidified)
@@ -30,37 +30,49 @@ This repository contains examples and best practices to use tools to assist in i
 
 # bz todo: make getting started a separate md page. Validate steps in clean env.
 
+This repo uses Anaconda to simplify package and environment management.
+
 To setup on your local machine:
 
-<details>
+<details><summary><strong><em>1. Set up Environment</em></strong></summary>
 
-<summary><strong><em>1. Set up Anaconda</em></strong></summary>
+    a. Install Anaconda with Python >= 3.6 
+       [Miniconda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html) is a quick way to get started.
 
-a. Install Anaconda with Python >= 3.6. [Miniconda](https://conda.io/miniconda.html) is a quick way to get started.
-b. conda install nb_conda
-
-c. Create conda environment
-```
-conda create -n interp python=3.6 anaconda
+ 
+    b. Create conda environment named interp and install packages
 
 ```
-d. Activate conda environment
+    conda create --name interp2 python=3.6 anaconda
+    
 ```
-conda activate interp
-or
-activate interp
-```
-blabla
 
+    Optional, additional reading:, [conda cheat sheet](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf), [jupyter](https://pypi.org/project/jupyter/) and [nb_conda](https://github.com/Anaconda-Platform/nb_conda)
+
+<details><summary><strong><em>On Windows: c. Activate conda environment</strong></em></summary>
+
+```
+    activate interp
+```
 </details>
 
+<details><summary><strong><em>On Linux:</em> c. Activate conda environment</em></strong></summary>
+
+```
+    source activate interp
+```
+</details>
+
+</details>
+ 
 <details>
 
 <summary><strong><em>2. Clone the interpret-community repo</em></strong></summary>
 
-a. Clone the repository 
+a. Clone and cd into the repository
 ```
-git clone https://github.com/Microsoft/Recommenders
+git clone https://github.com/Microsoft/Interpret-community
+cd interpret-community
 ```
 </details>
 
@@ -68,28 +80,24 @@ git clone https://github.com/Microsoft/Recommenders
 <summary><strong><em>3. Install Python module, packages and necessary distributions</em></strong></summary>
 
 
-from the root folder:
 ```
-python/pip install -e . 
+pip install -e ./python 
 ```
 a. Install additional packages for tests and more
 ```
 pip install -r requirements.txt
 ```
-b. Install scikit-learn
-```
-pip install sklearn
-```
+
 </details>
 
 <details>
 <summary><strong><em>3. Set up and run Jupyter Notebook server </em></strong></summary>
 
-a. Set up and run Jupyter Notebook
+a. Install and run Jupyter Notebook
 ```
-activate interp
-pip install interpret
-pip install jupyter
+if needed:
+          pip install jupyter
+then:
 jupyter notebook
 ```
 </details>
@@ -104,21 +112,22 @@ Add ref to
 https://docs.microsoft.com/en-us/python/api/azureml-explain-model/azureml.explain.model?view=azure-ml-py
 
 * The API supports both dense (numpy or pandas) and sparse (scipy) datasets
-(verify?)
+
 * For more advanced users, individual explainers can be used
  (details?)
-* The TabularExplainer provides local and global feature importances (s?)  
+* The TabularExplainer provides local and global feature importances  
     *  The best explainer is automatically chosen for the user based on the model
-        - (how to define best)
+        - Best implies fastest execution time and highest interpretabilty accuracy.
 * Local feature importances are for each evaluation row
 * Global feature importances summarize the most importance features at the model-level
  * The KernelExplainer and MimicExplainer are for BlackBox models
  * The MimicExplainer is faster but less accurate than the KernelExplainer
  * The TreeExplainer is for tree-based models
  * The DeepExplainer is for DNN tensorflow or pytorch models
-shap and lime have docs
-others ?
-global surrogate is 
+[shap](https://github.com/slundberg/shap) and [lime](https://github.com/marcotcr/lime) have docs
+
+global surrogate is ???
+
 # Contributing
 
 # bz is CLA required when we go public?
